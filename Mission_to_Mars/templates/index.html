@@ -30,8 +30,37 @@
         <p>{{scraped_data.NewsBlurb}}</p>
       </div>
     </div>
+
     <h3>Featured Image of Mars:</h3>
     <img src="{{ scraped_data.Image_URL }}" alt="Featured Image">
+
+
+    <div class="row" id="news-item">
+      <div class="col-md-12">
+        <p>{{scraped_data.HTML_table}}</p>
+      </div>
+    </div>
+
+
+
+    <!-- <table class="table">
+      <thead>
+          <tr>
+              <th>name</th>
+              <th>age</th>
+              <th>option</th>
+          <tr>
+      </thead>
+      <tbody>
+          {% for person in people %}
+          <tr>
+              <td>{{ person.name }}</td>
+              <td>{{ person.age }}</td>
+              <td>{{ person.option }}</td>
+          </tr>
+          {% endfor %}
+      </tbody>
+  </table> -->
 
   </div>
 </body>
