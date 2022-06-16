@@ -60,7 +60,7 @@ def scrape():
     mars_planet_profile
 
     # now convert the table into a HTML string
-    html_table = mars_planet_profile.to_html()
+    html_table = mars_planet_profile.to_html(index=False, header=False)
 
     # ################################
     # fourth scrape

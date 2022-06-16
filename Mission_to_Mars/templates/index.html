@@ -17,52 +17,60 @@
       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Show me the data!</a></p>
     </div>
 
-    <!-- Mars information -->
+    <!-- Mars headlines, news blurb -->
     <div class="row" id="news-item">
       <div class="col-md-12">
         <h3 class="heading"><b><i>Latest Mars News</i></b></h3>
         <h4>{{scraped_data.Headline}}</h4>
       </div>
     </div>
-
     <div class="row" id="news-item">
       <div class="col-md-12">
         <p>{{scraped_data.NewsBlurb}}</p>
       </div>
     </div>
+    </div>
 
-    <h3>Featured Image of Mars:</h3>
-    <img src="{{ scraped_data.Image_URL }}" alt="Featured Image">
-
-
-    <div class="row" id="news-item">
-      <div class="col-md-12">
-        <p>{{scraped_data.HTML_table}}</p>
+    <!-- featured image -->
+    <div class="container">
+      <div class="col-md-6 px-0">
+        <h3>Featured Image of Mars:</h3>
+        <img src="{{ scraped_data.Image_URL }}" class="img-thumbnail">
+      </div>
+      <div class="row" id="Mars facts">
+        <div class="col-md-4">
+          <table class="table thumbnail">
+            <thead> 
+              <tr style="text-align: right;"> 
+                <th>Mars Facts</th>  
+                 {{scraped_data.HTML_table | safe}}
+              </tr> 
+            </thead> 
+          </table>
+        </div>
       </div>
     </div>
 
+    
 
+  <div class="container">
+    <h3>Mars Hemispheres</h3>
 
-    <!-- <table class="table">
-      <thead>
-          <tr>
-              <th>name</th>
-              <th>age</th>
-              <th>option</th>
-          <tr>
-      </thead>
-      <tbody>
-          {% for person in people %}
-          <tr>
-              <td>{{ person.name }}</td>
-              <td>{{ person.age }}</td>
-              <td>{{ person.option }}</td>
-          </tr>
-          {% endfor %}
-      </tbody>
-  </table> -->
+    {% for hemisphere in scraped_data.Hemis_URL %}
+    <div class="card col-md-3 px-0">
+      <img src="{{ hemisphere.img_url }}" class="img-thumbnail">
+      <div class="card-body">
+        <h5 class="card-title">{{hemisphere.title}}</h5>
+        <p class="card-text">Imagery of the Mars {{hemisphere.title}}.</p>
+      </div>
+    </div>
+    {% endfor %}
+
 
   </div>
+
+
+  
 </body>
 
 </html>
